@@ -1,0 +1,36 @@
+body {
+    background-color: #242424;
+    color: #D4D4D4;
+}
+
+table {
+    border-collapse: collapse;
+    border: 2px #D4D4D4 solid;
+    margin: 20px auto 0px auto;
+}
+
+th, td {
+    width: 125px;
+    height: 125px;
+    border: 2px #D4D4D4 solid;
+    position: relative;
+    text-align: center;
+    padding: 10px;
+}
+
+thead td {
+    height: fit-content;
+    font-size: 17px;
+}
+
+.cross-bingo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.cross-bingo.show,
+.cross-bingo.free-space {
+    display: block;
+}
