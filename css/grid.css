@@ -19,7 +19,8 @@ th, td {
     font-size: 12px;
 }
 
-thead td {
+thead td,
+tfoot td {
     height: fit-content;
     padding: 15px;
 }
@@ -27,6 +28,30 @@ thead td {
 thead td h3 {
     font-size: 17px;
     margin: 0;
+}
+
+tfoot td a {
+    border: #D4D4D4 2px solid;
+    display: inline-block;
+    padding: 7px 10px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+tfoot td a:visited {
+    color: #D4D4D4;
+}
+
+.footer {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer > span {
+    text-align: right;
+    font-size: 15px;
 }
 
 .cross-bingo {
