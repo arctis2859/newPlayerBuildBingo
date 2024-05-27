@@ -3,7 +3,6 @@
 }())
 
 function createSessionToken() {
-    var isTokenValid = false;
     if(localStorage.getItem('token') == null) {
         localStorage.setItem('token', encryptData((new Date()).toString()));
         createBingoBoard(true);
@@ -61,7 +60,7 @@ function createBingoBoard(isTokenValid) {
 }
 
 function populateNewBingoBoard() {
-    $.get('/js/hnsbingo.txt', function(data) {
+    $.get('js/hnsbingo.txt', function(data) {
         bingoSquares = data.split('\n');
 
         shuffle(bingoSquares);
