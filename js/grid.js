@@ -60,7 +60,7 @@ function createBingoBoard(isTokenValid) {
 }
 
 function populateNewBingoBoard() {
-    $.get('HnSBingo/js/hnsbingo.txt', function(data) {
+    $.get('js/hnsbingo.txt', function(data) {
         bingoSquares = data.split('\n');
 
         shuffle(bingoSquares);
