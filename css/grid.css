@@ -21,7 +21,12 @@ th, td {
 
 thead td {
     height: fit-content;
+    padding: 15px;
+}
+
+thead td h3 {
     font-size: 17px;
+    margin: 0;
 }
 
 .cross-bingo {

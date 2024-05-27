@@ -9,7 +9,7 @@ function createSessionToken() {
     } else {
         var decrypted = decryptData(localStorage.getItem('token'));
         var tokenDate = new Date(Date.parse(decrypted));
-
+        
         if(tokenDate.setHours(0,0,0,0) != (new Date()).setHours(0,0,0,0)) {
             localStorage.clear();
             createSessionToken();
@@ -60,7 +60,7 @@ function createBingoBoard(isTokenValid) {
 }
 
 function populateNewBingoBoard() {
-    $.get('js/hnsbingo.txt', function(data) {
+    $.get('hnsbingo.txt', function(data) {
         bingoSquares = data.split('\n');
 
         shuffle(bingoSquares);

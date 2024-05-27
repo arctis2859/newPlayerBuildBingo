@@ -43,3 +43,5 @@ Newbie asking questions before even starting the tutorial
 [Feature] is stupid because idk how it works
 Chronically Illiterate Asker
 Lack of reading comprehension
+Asking a question they think they know the answer to, gets corrected and argues that they're right anyway
+"I copied the build exactly, why is it not working!?!?!?"
