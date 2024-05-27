@@ -10,12 +10,13 @@ table {
 }
 
 th, td {
-    width: 125px;
-    height: 125px;
+    width: 100px;
+    height: 100px;
     border: 2px #D4D4D4 solid;
     position: relative;
     text-align: center;
     padding: 10px;
+    font-size: 12px;
 }
 
 thead td {
