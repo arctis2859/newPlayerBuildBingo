@@ -6,7 +6,7 @@ body {
 table {
     border-collapse: collapse;
     border: 2px #D4D4D4 solid;
-    margin: 20px auto 0px auto;
+    margin: 0px auto 0px auto;
 }
 
 th, td {
@@ -16,7 +16,7 @@ th, td {
     position: relative;
     text-align: center;
     padding: 10px;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 thead td,
