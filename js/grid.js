@@ -1,7 +1,26 @@
 (function() {
+    checkForUpdate();
+}())
+
+function checkForUpdate() {
+    let updateToken = localStorage.getItem('updated');
+
+    if(updateToken != null) {
+        let decrypted = decryptData(updateToken);
+        let tokenDate = new Date(Date.parse(decrypted));
+
+        if(tokenDate < new Date(Date.parse('Tue May 28 2024 10:11:09 GMT+0700 (Western Indonesia Time)'))) {
+            localStorage.clear();
+        }
+    } else {
+        localStorage.clear();
+    }
+
+    localStorage.setItem('updated', encryptData((new Date()).toString()));
+
     createSessionToken();
     addRerollFunctionality();
-}())
+}
 
 function createSessionToken() {
     if(localStorage.getItem('token') == null) {
@@ -9,8 +28,8 @@ function createSessionToken() {
         localStorage.setItem('rerolls', encryptData(JSON.stringify(3)));
         createBingoBoard(true);
     } else {
-        var decrypted = decryptData(localStorage.getItem('token'));
-        var tokenDate = new Date(Date.parse(decrypted));
+        let decrypted = decryptData(localStorage.getItem('token'));
+        let tokenDate = new Date(Date.parse(decrypted));
         
         if(tokenDate.setHours(0,0,0,0) != (new Date()).setHours(0,0,0,0)) {
             localStorage.clear();
@@ -22,13 +41,13 @@ function createSessionToken() {
 }
 
 function encryptData(data) {
-    var encrypted = CryptoJS.AES.encrypt(data, `Don't Cheat at HnS Bingo!`);
+    let encrypted = CryptoJS.AES.encrypt(data, `Don't Cheat at HnS Bingo!`);
     return encrypted;
 }
 
 function decryptData(data) {
-    var bytes = CryptoJS.AES.decrypt(data, `Don't Cheat at HnS Bingo!`);
-    var decrypted = bytes.toString(CryptoJS.enc.Utf8);
+    let bytes = CryptoJS.AES.decrypt(data, `Don't Cheat at HnS Bingo!`);
+    let decrypted = bytes.toString(CryptoJS.enc.Utf8);
     return decrypted;
 }
 
@@ -81,8 +100,8 @@ function populateNewBingoBoard() {
 
         shuffle(bingoSquares);
         
-        var bingoBoard = [];
-        var bingoRow = [];
+        let bingoBoard = [];
+        let bingoRow = [];
         for(let i = 1; i <= 25; i++) {
             if(i == 13) {
                 bingoRow.push("We shall never deny a guest, even the most ridiculous request");
