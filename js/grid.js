@@ -10,9 +10,11 @@ function checkForUpdate() {
         let tokenDate = new Date(Date.parse(decrypted));
 
         if(tokenDate < new Date(Date.parse('Tue May 28 2024 10:11:09 GMT+0700 (Western Indonesia Time)'))) {
+            alert("SORRY, NEW UPDATE DROPPED, BINGO CARD RESETTING :DORIME:");
             localStorage.clear();
         }
     } else {
+        alert("SORRY, NEW UPDATE DROPPED, BINGO CARD RESETTING :DORIME:");
         localStorage.clear();
     }
 
