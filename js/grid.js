@@ -1,10 +1,12 @@
 (function() {
     createSessionToken();
+    addRerollFunctionality();
 }())
 
 function createSessionToken() {
     if(localStorage.getItem('token') == null) {
         localStorage.setItem('token', encryptData((new Date()).toString()));
+        localStorage.setItem('rerolls', encryptData(JSON.stringify(3)));
         createBingoBoard(true);
     } else {
         var decrypted = decryptData(localStorage.getItem('token'));
@@ -51,7 +53,21 @@ function addGridClick() {
     });
 }
 
+function addRerollFunctionality() {
+    $('.reroll-button').click(function(event) {
+        let rerolls = JSON.parse(decryptData(localStorage.getItem('rerolls')));
+
+        if(rerolls > 0) {
+            rerolls--;
+            localStorage.setItem('rerolls', encryptData(JSON.stringify(rerolls)));
+            createBingoBoard(true);
+        }
+    })
+}
+
 function createBingoBoard(isTokenValid) {
+    let rerolls = JSON.parse(decryptData(localStorage.getItem('rerolls')));
+    $('#reroll-count').text(rerolls);
     if(isTokenValid) {
         populateNewBingoBoard();
     } else {

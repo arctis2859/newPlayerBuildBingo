@@ -13,9 +13,22 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body>
+    <div class="reroll-container">
+        <button class="reroll-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="#D4D4D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-refresh">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" />
+                <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" />
+            </svg>
+        </button>
+        <span>You have <span id="reroll-count"></span> out of 3 rerolls left today!</span>
+    </div>
     <table>
         <thead>
             <tr>
@@ -30,7 +43,8 @@
                 <div class="footer">
                     <a href="hnsbingo.txt">Possible Bingo Squares</a>
                     <span>
-                        "High Effort Shitpost" by citrine.scarlett, contact on discord if have any suggestions that aren't in the list
+                        "High Effort Shitpost" by citrine.scarlett, contact on discord if have any suggestions that
+                        aren't in the list
                     </span>
                 </div>
             </td>
