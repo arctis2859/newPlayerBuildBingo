@@ -30,7 +30,7 @@ thead td h3 {
     margin: 0;
 }
 
-tfoot td a {
+.pseudo-button {
     border: #D4D4D4 2px solid;
     display: inline-block;
     padding: 7px 10px;
@@ -39,7 +39,7 @@ tfoot td a {
     color: #D4D4D4;
 }
 
-tfoot td a:visited {
+.pseudo-button:visited {
     color: #D4D4D4;
 }
 
@@ -81,9 +81,25 @@ tfoot td a:visited {
 }
 
 .reroll-container {
-    position: absolute;
-    margin: 15px;
+    margin-top: -1.5px;
+    border-top: 2px solid #D4D4D4;
+    padding-top: 10px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.reroll-container > div {
+    margin-right: 15px;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
+    border: 2px solid #D4D4D4;
+    border-radius: 5px;
+    padding: 7.5px 10px;
+}
+
+.reroll-container > div > a:first-child {
+    margin-right: 10px;
 }
