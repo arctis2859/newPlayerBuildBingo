@@ -9,7 +9,7 @@ function checkForUpdate() {
         let decrypted = decryptData(updateToken);
         let tokenDate = new Date(Date.parse(decrypted));
 
-        if(tokenDate < new Date(Date.parse('Tue May 30 2024 10:11:09 GMT+0700 (Western Indonesia Time)'))) {
+        if(tokenDate < new Date(Date.parse('Thu May 30 2024 12:03:42 GMT+0700 (Western Indonesia Time)'))) {
             alert(`New update dropped, don't worry though, resetting your rerolls cuz reroll update!`);
             localStorage.setItem('rerolls', encryptData(JSON.stringify(10)));
         }
