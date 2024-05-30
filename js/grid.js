@@ -9,13 +9,13 @@ function checkForUpdate() {
         let decrypted = decryptData(updateToken);
         let tokenDate = new Date(Date.parse(decrypted));
 
-        if(tokenDate < new Date(Date.parse('Tue May 28 2024 10:11:09 GMT+0700 (Western Indonesia Time)'))) {
-            alert("SORRY, NEW UPDATE DROPPED, BINGO CARD RESETTING :DORIME:");
-            localStorage.clear();
+        if(tokenDate < new Date(Date.parse('Tue May 30 2024 10:11:09 GMT+0700 (Western Indonesia Time)'))) {
+            alert(`New update dropped, don't worry though, resetting your rerolls cuz reroll update!`);
+            localStorage.setItem('rerolls', encryptData(JSON.stringify(10)));
         }
     } else {
-        alert("SORRY, NEW UPDATE DROPPED, BINGO CARD RESETTING :DORIME:");
-        localStorage.clear();
+        alert(`New update dropped, don't worry though, resetting your rerolls cuz reroll update!`);
+        localStorage.setItem('rerolls', encryptData(JSON.stringify(10)));
     }
 
     localStorage.setItem('updated', encryptData((new Date()).toString()));
