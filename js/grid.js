@@ -81,21 +81,30 @@ function addRerollFunctionality() {
         let rerolls = JSON.parse(decryptData(localStorage.getItem('rerolls')));
 
         if(rerolls > 0) {
-            rerolls--;
-            localStorage.setItem('rerolls', encryptData(JSON.stringify(rerolls)));
-            createBingoBoard(true);
+            createBingoBoard(true, true);
         }
     })
 }
 
-function createBingoBoard(isTokenValid) {
+async function createBingoBoard(isNewBoard, reroll) {
     let rerolls = JSON.parse(decryptData(localStorage.getItem('rerolls')));
     $('#reroll-count').text(rerolls);
-    if(isTokenValid) {
-        populateNewBingoBoard();
+
+    if(isNewBoard) {
+        await populateNewBingoBoard();
+
+        if(reroll == true) {
+            rerolls--;
+            localStorage.setItem('rerolls', encryptData(JSON.stringify(rerolls)));
+            $('#reroll-count').text(rerolls);
+        }
     } else {
         retrieveOldBoard();
     }
+}
+
+function randomIndex(max) {
+    return Math.floor(Math.random() * max)
 }
 
 async function populateNewBingoBoard() {
@@ -113,9 +122,9 @@ async function populateNewBingoBoard() {
             if(bingoSquares[i-1] == '[spotted]') {
                 let response = await $.get('data/hnsregulars.txt');
                 let spotData = response.split('\n');
-                shuffle(spotData);
+                spotData = spotData[randomIndex(spotData.length)].trim();
 
-                bingoRow.push(`[${spotData[0].trim()}] spotted!`);
+                bingoRow.push(`[${spotData}] spotted!`);
             } else {
                 bingoRow.push(bingoSquares[i-1]);
             }
