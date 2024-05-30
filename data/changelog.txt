@@ -1,6 +1,12 @@
 I'm too lazy and tired to make an actual changelog page
 Changelogs [dd/MM/yyyy]:
 
+30/05/2024 changes:
+Turned it into 10 rerolls cuz idk, will consider infinite if people bug me about it, 10 just felt like a nice number for having fun
+
+structural changes
+Added and removed stuff, don't remember what I'm tired and need some rest lmao
+
 29/05/2024 changes:
 UI Overhaul
 

@@ -27,7 +27,7 @@ function checkForUpdate() {
 function createSessionToken() {
     if(localStorage.getItem('token') == null) {
         localStorage.setItem('token', encryptData((new Date()).toString()));
-        localStorage.setItem('rerolls', encryptData(JSON.stringify(3)));
+        localStorage.setItem('rerolls', encryptData(JSON.stringify(10)));
         createBingoBoard(true);
     } else {
         let decrypted = decryptData(localStorage.getItem('token'));
@@ -36,9 +36,9 @@ function createSessionToken() {
         if(tokenDate.setHours(0,0,0,0) != (new Date()).setHours(0,0,0,0)) {
             localStorage.clear();
             createSessionToken();
+        } else {
+            createBingoBoard(false);
         }
-
-        createBingoBoard(false);
     }
 }
 
@@ -96,37 +96,45 @@ function createBingoBoard(isTokenValid) {
     }
 }
 
-function populateNewBingoBoard() {
-    $.get('hnsbingo.txt', function(data) {
-        bingoSquares = data.split('\n');
+async function populateNewBingoBoard() {
+    let data = await $.get('data/hnsbingo.txt');
+    let bingoSquares = data.split('\n')
 
-        shuffle(bingoSquares);
-        
-        let bingoBoard = [];
-        let bingoRow = [];
-        for(let i = 1; i <= 25; i++) {
-            if(i == 13) {
-                bingoRow.push("We shall never deny a guest, even the most ridiculous request");
+    shuffle(bingoSquares);
+    
+    let bingoBoard = [];
+    let bingoRow = [];
+    for(let i = 1; i <= 25; i++) {
+        if(i == 13) {
+            bingoRow.push("We shall never deny a guest, even the most ridiculous request");
+        } else {
+            if(bingoSquares[i-1] == '[spotted]') {
+                let response = await $.get('data/hnsregulars.txt');
+                let spotData = response.split('\n');
+                shuffle(spotData);
+
+                bingoRow.push(`[${spotData[0].trim()}] spotted!`);
             } else {
                 bingoRow.push(bingoSquares[i-1]);
+            }
 
-                if(i % 5 == 0) {
-                    bingoBoard.push(bingoRow);
-                    bingoRow = [];
-                }
+            if(i % 5 == 0) {
+                bingoBoard.push(bingoRow);
+                bingoRow = [];
             }
         }
-        $('.grid-game').empty();
+    }
 
-        let rowNumber = 0;
-        for(let row of bingoBoard) {
-            newBingoRow(row, ['', '', '', '', ''], rowNumber);
-            localStorage.setItem(`row${rowNumber}`, encryptData(JSON.stringify(row)));
-            localStorage.setItem(`rowState${rowNumber++}`, encryptData(JSON.stringify(['', '', '', '', ''])));
-        }
+    $('.grid-game').empty();
 
-        addGridClick();
-    })
+    let rowNumber = 0;
+    for(let row of bingoBoard) {
+        newBingoRow(row, ['', '', '', '', ''], rowNumber);
+        localStorage.setItem(`row${rowNumber}`, encryptData(JSON.stringify(row)));
+        localStorage.setItem(`rowState${rowNumber++}`, encryptData(JSON.stringify(['', '', '', '', ''])));
+    }
+
+    addGridClick();
 }
 
 function retrieveOldBoard() {
