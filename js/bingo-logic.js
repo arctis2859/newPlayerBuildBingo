@@ -1,5 +1,6 @@
 (function() {
-    checkForUpdate();
+    // checkForUpdate();
+    createSessionToken();
 }())
 
 function checkForUpdate() {
@@ -42,6 +43,7 @@ function createSessionToken() {
             createBingoBoard(false);
         }
     }
+    addRerollFunctionality();
 }
 
 function encryptData(data) {
