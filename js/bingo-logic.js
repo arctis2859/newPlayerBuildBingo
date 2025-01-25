@@ -119,7 +119,7 @@ async function populateNewBingoBoard() {
     let bingoRow = [];
     for(let i = 1; i <= 25; i++) {
         if(i == 13) {
-            bingoRow.push("We shall never deny a guest, even the most ridiculous request");
+            bingoRow.push("ammo drum");
         } else {
             if(bingoSquares[i-1] == '[spotted]') {
                 let response = await $.get('data/hnsregulars.txt');
