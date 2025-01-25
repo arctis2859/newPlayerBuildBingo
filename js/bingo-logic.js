@@ -163,7 +163,7 @@ function retrieveOldBoard() {
 }
 
 function newBingoRow(row, state, rowNumber) {
-    let freeSpace = (row[2] == 'We shall never deny a guest, even the most ridiculous request') ? 'free-space' : '';
+    let freeSpace = (row[2] == 'ammo drum') ? 'free-space' : '';
 
     let newRow =
         `
